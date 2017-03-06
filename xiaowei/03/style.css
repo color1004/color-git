@@ -1,0 +1,60 @@
+body{
+	background-color:white;
+	margin:0;
+	font-family:"Microsoft Yahei";
+}
+div{
+	border:1px solid #999;
+	background-color:#fff;
+}
+.main{	
+	background-color:#eee;
+	padding:20px;
+	margin:20px;
+}
+/*clearfix规则*/
+.main:after{
+	content:".";
+	display:block;
+	clear:both;
+	height:0px;
+	visibility: hidden;
+}/*clearfix添加了一个清除的包含句点作为非浮动元素（要有内容，句号是最小的内容）给父元素的最后添加一个非浮动的子元素，然后清除该子元素*/
+.left{
+	float:left;
+	padding:20px;
+	width:160px;
+	height:auto;
+}
+.right{
+	float:right;
+	padding:20px 20px 0px 20px;
+	width:80px;
+	height:auto;
+}
+.center{		
+	margin:0px 140px 0px 220px;	
+	height:auto;	
+	padding:20px 20px 0px 20px;
+}
+p.teamname{
+	float:left;
+	margin-left:20px;
+	width:60px;
+	font-size:15px;
+	margin-top:0px;
+}
+div p{
+	font-size:15px;
+	margin-top:0px;
+}
+img.individuallogo{
+	width:80px;
+	height:80px;
+	margin-bottom:20px;
+}
+img.teamlogo{
+	float:left;
+	width:80px;
+	height:80px;	
+}
