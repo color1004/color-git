@@ -1,0 +1,131 @@
+body{
+	font-family: "Microsoft Yahei";
+	background:#dedede;
+	margin:0px;
+	}
+header{
+	background-color:#333333;
+	height:60px;
+	}
+header img{
+	float:left;
+	margin-left:40px;
+	width:117px;
+	height:60px;
+	}
+nav{
+	float:right;
+	margin-right:20px;
+	height:60px;
+	}
+nav ul{
+	list-style-type: disc;
+	}
+nav ul li{	
+	float:left;	
+	margin-right:20px;	
+	color:black;
+	}
+nav a{
+	text-decoration:none;
+	color:white;
+	}
+article ul{
+	list-style-type:none;
+	
+	}
+main{
+	background-color:#dedede;
+	margin:20px;
+	}
+article{
+	background-color:white;
+	padding:20px;
+	margin-top:20px;
+	box-shadow: 2px 2px 2px #888888;
+	border:1px solid #cdcdcd;
+	}
+h3{
+	color:#666666;
+	}
+aside h3{	
+	margin-left:15px;
+	color:black;
+	}
+.writer{
+	font-size:14px;
+	color:#666666;
+	}
+p{
+	line-height:26px;
+	}
+p.suojin{
+	text-indent:2em;
+	}
+figure{
+	width:120px;	
+	border:1px solid #bebebe;
+	padding:10px;
+	}
+figcaption{
+	text-align:center;
+	margin-bottom:10px;
+	}
+article table{
+	width:100%;
+	border-collapse:collapse;
+	border:1px solid #cccccc;
+	text-align:left;
+	}
+table caption{
+	text-align:left;
+}
+th{
+	padding:5px;
+	}
+td{
+	padding:5px;
+	}
+thead{
+	background-color:#333333;
+	color:white;
+	}
+tfoot{
+	background-color:#cccccc;
+	font-weight:700;
+	}
+aside{
+	background-color:#dedede;
+	margin:20px;
+	}
+aside form table{
+	 border:0;
+}
+td.message{
+	color:#666666;
+	}
+td.right{
+	text-align:right;
+	}padding-top:5px;
+.textcenter{
+	text-align:center
+	}
+.submit{
+	width:100%;
+	height: 38px;
+	font-size:14px;
+	color: white;
+	background-color: #3355d0;
+	border-radius: 10px;
+	border: 0px;
+	}
+footer{
+	background-color:black;	
+	height:60px;
+	line-height:60px;	
+	text-align:center;
+	padding-top:5px;
+	}
+footer p{
+	color:white;	
+}
