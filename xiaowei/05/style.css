@@ -1,0 +1,175 @@
+body{
+	font-family: "Microsoft Yahei";
+	background:#dedede;
+	margin:0px;
+	}
+header{
+	background-color:#333333;
+	height:60px;
+	}
+header img{
+	float:left;
+	margin-left:40px;
+	width:117px;
+	height:60px;
+	}
+nav{
+	float:right;
+	margin-right:0px;
+	height:60px;
+	}
+nav ul{
+	list-style-type: disc;
+	}
+nav ul li{	
+	float:left;	
+	margin-right:20px;	
+	color:black;
+	}
+nav a{
+	text-decoration:none;
+	color:white;
+	}
+article ul{
+	list-style-type:none;	
+	}
+.container{
+	margin:20px;
+}
+main{
+	height:auto;
+	width:auto;	
+	margin-right:385px;
+	}
+aside{
+	float:right;
+	margin-top:-20px;
+	margin-right:0px;
+	width:365px;
+	height:auto;
+	
+	}
+.container:after{
+	content:".";
+	display:block;
+	clear:both;
+	height:0px;
+	visibility:hidden;
+}
+article{
+	background-color:white;
+	padding:0px 20px 20px 20px;
+	margin-top:20px;
+	box-shadow: 2px 2px 2px #888888;
+	border:1px solid #cdcdcd;
+	}
+h3{
+	color:#666666;
+	}
+
+aside h3{	
+	margin-left:0px;
+	color:black;
+	border-left:3px solid #cdcdcd;
+	height:16px;
+	line-height:16px;
+	padding:10px 10px 10px 10px;
+	font-size:18px;
+	}
+.writer{
+	font-size:14px;
+	color:#666666;
+	}
+p{
+	line-height:26px;
+	}
+p.suojin{
+	text-indent:2em;
+	}
+figure{
+	width:120px;	
+	border:1px solid #bebebe;
+	padding:10px;
+	}
+figcaption{
+	text-align:center;
+	margin-bottom:10px;
+	}
+article table{
+	width:100%;
+	border-collapse:collapse;
+	border:1px solid #cccccc;
+	text-align:left;
+	}
+table caption{
+	text-align:left;
+}
+th{
+	padding:5px;
+	}
+td{
+	padding:5px;
+	}
+thead{
+	background-color:#333333;
+	color:white;
+	}
+tfoot{
+	background-color:#cccccc;
+	font-weight:700;
+	}
+
+aside form table{
+	 border:0;
+	 width:325px;
+	 font-size:13px;
+}
+td.message{
+	color:#666666;
+	}
+td.right{
+	text-align:right;
+	}
+.textcenter{
+	text-align:center
+	}
+#texttop{
+	vertical-align:top;
+}
+/*placeholder文字设置 不同浏览器*/
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #000; opacity:1; 
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #000; opacity:1;
+}
+input:-ms-input-placeholder{
+    color: #000; opacity:1;
+}
+input::-webkit-input-placeholder{ /* chrom */
+    color: #000; opacity:1; 
+	font-size:13px;
+}
+textarea::-webkit-input-placeholder{
+    color: #000; opacity:1; 
+	font-size:15px;
+}
+.submit{
+	width:320px;
+	height: 38px;
+	font-size:14px;
+	color: white;
+	background-color: #3355d0;
+	border-radius: 10px;
+	border: 0px;
+	}
+footer{
+	background-color:black;	
+	height:60px;
+	line-height:60px;	
+	text-align:center;
+	padding-top:5px;
+	}
+footer p{
+	color:white;	
+}
