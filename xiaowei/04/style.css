@@ -1,0 +1,29 @@
+.rectangle{
+	width:400px;
+	height:200px;
+	background-color:#ccc;
+	overflow:hidden;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-200px;
+	margin-top:-100px;	
+}
+.circleleft{
+	width:100px;
+	height:100px;
+	border-radius:50%;
+	background-color:#fc0;
+	position:absolute;
+	margin-left:-50px;
+	margin-top:-50px;	
+}
+.circleright{
+	width:100px;
+	height:100px;
+	border-radius:50%;
+	background-color:#fc0;
+	position:absolute;
+	top:75%;
+	left:87.5%;
+}
