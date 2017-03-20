@@ -631,6 +631,7 @@ div#contactus div#link a.Internet{
 /*footer*/
 div#footer{
 	height:28px;
+	width:100%;
 	background-color:#2f2f38;
 	color:#fff;
 	font:12px 宋体;
@@ -638,7 +639,7 @@ div#footer{
 }
 div#footer p{
 	margin-left:95px;
-	position;relative;
+	position:relative;
 }
 div#footer p span{
 	position:absolute;
