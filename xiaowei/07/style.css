@@ -65,19 +65,17 @@ ul#menu li a div.underline{
 	width:56px;
 	background-color:#e7504d;
 	height:5px;
-	position:absolute;
-	bottom:-25px;
+	margin-top:5px;
 }
 ul#menu li a:hover div.underline{
 	display:block;
 }
 /*首页红色*/
-ul li#s a{
+ul#menu li#s a{
 	color: #e74f4d;
 }
-ul li#s a div.underline{
+ul#menu li#s a div.underline{
 	display:block;
-	bottom:-10px;/*为什么不能是-25px 不知道什么鬼啊啊啊啊啊啊*/
 }
 div#login{	
 	float:right;
