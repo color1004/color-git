@@ -76,6 +76,7 @@ ul li#s a{
 }
 ul li#s a div.underline{
 	display:block;
+	bottom:-10px;/*为什么不能是-25px 不知道什么鬼啊啊啊啊啊啊*/
 }
 div#login{	
 	float:right;
