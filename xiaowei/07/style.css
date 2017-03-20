@@ -38,7 +38,8 @@ h1#name{
 	float:left;
 }
 ul#menu{
-	margin-left:790px;
+	margin-right:30px;
+	float:right;
 }
 ul#menu li{
 	float:left;
