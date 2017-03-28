@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>IFE JavaScript Task 04</title>
+	<style type="text/css">
+		ul#list{
+			margin-top:10px;
+			margin-left:-40px;
+		}
+		li{
+			list-style-type:none;
+			float:left;
+			padding:8px;
+			margin-right:10px;
+			background-color:red;
+			color:white;
+			font-size:14px;
+		}
+		button#right-in{
+			margin-right:30px;								
+		}
+	</style>
+
+</head>
+<body>	
+	
+	<input type="text" id="data-in" name="input" value="" />
+	<button id="left-in">左侧入</button>
+	<button id="right-in">右侧入</button>
+	<button id="left-out">左侧出</button>
+	<button id="right-out">右侧出</button>
+	<ul id="list">		
+	</ul>
+	<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=208711778&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:208711778:9" alt="舜王城中药材" /></a>	
+	<script>	
+	window.onload = function(){
+	
+		var num = document.getElementById("data-in");
+		var list = document.getElementById("list");
+		
+		//判断输入
+		function insertNum(){
+			if(num.value == ""){
+				alert("请输入一个数字");	
+				num.focus();
+			}else if(!isNaN(num.value)){
+				return num.value;
+			}else{
+				alert("请输入一个数字")
+				num.value = "";
+				num.focus();
+			}		
+		}
+					
+		function leftAdd(){
+			var data = insertNum();
+			if(!isNaN(data)){
+				var li = document.createElement("li");
+				li.innerHTML = data;
+				list.insertBefore(li,list.firstChild);
+				num.value = "";
+				num.focus();
+			}		
+		}
+		function rightAdd(){
+			var data = insertNum();
+			if(!isNaN(data)){
+				var li = document.createElement("li");
+				li.innerHTML = data;
+				list.appendChild(li,list.firstChild);
+				num.value = "";
+				num.focus();
+			}
+		}
+		function leftRemove(){
+			var liRemove = list.getElementsByTagName("li");
+			if(liRemove.length == 0){alert("无可删除元素");}
+			else{
+				var removeFirst=liRemove[0];
+				var mes = removeFirst.innerHTML;
+				removeFirst.parentNode.removeChild(removeFirst);
+				alert("删除元素：" + mes);
+			}	
+		}	
+		function rightRemove(){
+			var liRemove = list.getElementsByTagName("li");
+			if(liRemove.length == 0){alert("无可删除元素");}
+			else{
+				var removeLast=liRemove[liRemove.length-1];
+				var mes = removeLast.innerHTML;
+				removeLast.parentNode.removeChild(removeLast);
+				alert("删除元素：" + mes);	
+			}
+		}
+				
+		list.addEventListener('click',function(e){
+			if(e.target.nodeName == 'LI'){
+				list.removeChild(e.target);
+			}
+		})
+			
+		function init(){
+			var leftIn = document.getElementById("left-in");
+			var rightIn = document.getElementById("right-in");
+			var leftOut = document.getElementById("left-out");
+			var rightOut = document.getElementById("right-out");
+			
+			
+			leftIn.onclick = leftAdd;
+			rightIn.onclick = rightAdd;
+			leftOut.onclick = leftRemove;
+			rightOut.onclick = rightRemove;
+		}
+		init();
+	}
+	</script>
+
+
+
+
+</body>
+</html>
