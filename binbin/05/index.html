@@ -118,12 +118,28 @@
 			}
 		}
 		
+		function swap(data, left, right){
+			var t = data[left];
+			data[left] = data[right];
+			data[right] = t;
+		}
 		function sortData(data) {
-				data.sort(function(a,b){
-					return a - b;
-				});
-				return data;
+			/*data.sort(function(a,b){
+				return a - b;
+			});*/
+			var len=data.length;			
+			
+			for(var i=0; i<len; i++){
+				for(var j=0; j<(len-i); j++){
+					if(data[j] > data[j+1]){
+						swap(data, j, j+1);
+					}
+				}
 			}
+			
+			return data;
+		}
+		
 		function removeAll(){
 			var liRemove = list.getElementsByTagName("li");
 			while(liRemove.length>0){
