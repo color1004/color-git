@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>IFE JavaScript Task 05</title>
+	<style type="text/css">
+		ul#list{
+			margin-top:10px;
+			margin-left:-40px;
+			position:relative;
+		}
+		li{
+			list-style-type:none;
+			float:left;
+			margin-right:2px;
+			background-color:red;
+			width:20px;
+			height:10px;
+			color:red;
+		}
+		button#right-in{
+			margin-right:30px;								
+		}
+		button#right-out{
+			margin-right:30px;								
+		}
+	</style>
+
+</head>
+<body>	
+	
+	<input type="text" id="data-in" name="input" value="" />
+	<button id="left-in">左侧入</button>
+	<button id="right-in">右侧入</button>
+	<button id="left-out">左侧出</button>
+	<button id="right-out">右侧出</button>
+	<button id="order">排序</button>
+	<ul id="list">		
+	</ul>
+		
+	<script>	
+	window.onload = function(){
+	
+		var num = document.getElementById("data-in");
+		var list = document.getElementById("list");
+		var liarray = [];
+		
+		//判断输入
+		function insertNum(){
+			if(num.value == ""){
+				alert("请输入一个10-100的数字");	
+				num.focus();
+			}else if(!isNaN(num.value) && num.value<=100 && num.value>=10){
+				return num.value;				
+			}else{
+				alert("请输入一个10-100的数字")
+				num.value = "";
+				num.focus();
+			}		
+		}
+		
+		function leftAdd(){
+			if(liarray.length < 10){
+				var data = insertNum();			
+				if(!isNaN(data)){
+					liarray.unshift(data);
+					var li = document.createElement("li");
+					var liheight = data + "px";
+					li.style.height = liheight;
+					li.innerHTML = "";
+					list.insertBefore(li,list.firstChild);
+					num.value = "";
+					num.focus();
+				}	
+			}else{
+				alert("队列元素最多为60，不可再添加");
+			}
+				
+		}
+		function rightAdd(){
+			if(liarray.length < 10){
+				var data = insertNum();
+				if(!isNaN(data)){
+					liarray.push(data);
+					var li = document.createElement("li");
+					var liheight = data + "px";
+					li.style.height = liheight;
+					li.innerHTML = "";
+					list.appendChild(li);
+					num.value = "";
+					num.focus();
+				}
+			}else{
+				alert("队列元素最多为60，不可再添加");
+			}
+			
+		}
+		function leftRemove(){
+			var liRemove = list.getElementsByTagName("li");
+			if(liRemove.length == 0){alert("无可删除元素");}
+			else{
+				var removeFirst=liRemove[0];
+				var mes = liarray[0];
+				removeFirst.parentNode.removeChild(removeFirst);
+				alert("删除元素：" + mes);
+				liarray.shift();
+			}	
+		}	
+		function rightRemove(){
+			var liRemove = list.getElementsByTagName("li");
+			if(liRemove.length == 0){alert("无可删除元素");}
+			else{
+				var removeLast=liRemove[liRemove.length-1];
+				var mes = liarray[liarray.length-1];
+				removeLast.parentNode.removeChild(removeLast);
+				alert("删除元素：" + mes);
+				liarray.pop();				
+			}
+		}
+		
+		function sortData(data) {
+				data.sort(function(a,b){
+					return a - b;
+				});
+				return data;
+			}
+		function removeAll(){
+			var liRemove = list.getElementsByTagName("li");
+			while(liRemove.length>0){
+				var removeLast=liRemove[liRemove.length-1];				
+				removeLast.parentNode.removeChild(removeLast);
+			}
+		}
+		function listOrder(){
+			removeAll();
+			liarray = sortData(liarray);			
+			for(var i=0;i<liarray.length;i++){			
+				var li = document.createElement("li");
+				var liheight = liarray[i] + "px";
+				li.style.height = liheight;
+				li.innerHTML = "";
+				list.appendChild(li);
+			}
+		}
+				
+		list.addEventListener('click',function(e){
+			if(e.target.nodeName == 'LI'){
+				list.removeChild(e.target);
+			}
+		})
+			
+		function init(){
+			var leftIn = document.getElementById("left-in");
+			var rightIn = document.getElementById("right-in");
+			var leftOut = document.getElementById("left-out");
+			var rightOut = document.getElementById("right-out");
+			var order = document.getElementById("order");
+			
+			
+			leftIn.onclick = leftAdd;
+			rightIn.onclick = rightAdd;
+			leftOut.onclick = leftRemove;
+			rightOut.onclick = rightRemove;
+			order.onclick = listOrder;
+		}
+		init();
+	}
+	</script>
+
+
+
+
+</body>
+</html>
