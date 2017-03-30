@@ -7,16 +7,13 @@
 		ul#list{
 			margin-top:10px;
 			margin-left:-40px;
-			position:relative;
 		}
 		li{
 			list-style-type:none;
-			float:left;
+			display:inline-block;
 			margin-right:2px;
 			background-color:red;
-			width:20px;
-			height:10px;
-			color:red;
+			width:20px;			
 		}
 		button#right-in{
 			margin-right:30px;								
@@ -55,6 +52,8 @@
 				var data = num.value;							
 				var li = document.createElement("li");
 				var liheight = data + "px";
+				//var lileft = parseInt(list.childNodes[lis.length-1].left) + 22;
+				//li.style.left = lileft + "px";
 				li.style.height = liheight;
 				li.innerHTML = "";	
 				return li;
@@ -103,7 +102,7 @@
 				alert("删除元素：" + mes);
 			}
 		}
-		/*
+		
 		//交换元素
 		function swap(data, left, right){
 			var t = data[left];
@@ -118,7 +117,7 @@
 			var len=data.length;						
 			for(var i=0; i<(len-1); i++){
 				for(var j=0; j<(len-i-1); j++){
-					if(data[j].style.height.split("p")[0] > data[j+1].style.height.split("p")[0]){
+					if(data[j] > data[j+1]){
 						swap(data, j, j+1);
 					}
 				}
@@ -151,28 +150,28 @@
 				list.appendChild(li);
 			}
 			liarray = [];			
-		}*/
-		//简化方法
-		function listOrder(){
-			var len=lis.length;						
+		}
+		//简化方法 //有错
+		/*function listOrder(){
+			var len=list.childNodes.length;						
 			for(var i=0; i<(len-1); i++){
 				for(var j=0; j<(len-i-1); j++){
-					if(lis[j].style.height.split("p")[0] > lis[j+1].style.height.split("p")[0]){
-						list.insertBefore(lis[j+1],lis[j]);
-						list.removeChild(lis[j+2]);
+					if(parseInt(list.childNodes[j].style.height) > parseInt(list.childNodes[j+1].style.height)){
+						var node = list.removeChild(list.childNodes[j]);
+						list.insertBefore(node,list.childNodes[j+1]);
 					}
 				}
 			}	
-		}
+		}*/
 		//事件监听
-		/*list.addEventListener('click',function(e){
+		list.addEventListener('click',function(e){
 			if(e.target.nodeName == 'LI'){				
 				list.removeChild(e.target);
 			}
-		})*/
-		function remove(){
+		})
+		/*function remove(){
 			list.removeChild(event.target);
-		}	
+		}*/
 		function init(){
 			var leftIn = document.getElementById("left-in");
 			var rightIn = document.getElementById("right-in");
@@ -186,7 +185,7 @@
 			leftOut.onclick = leftRemove;
 			rightOut.onclick = rightRemove;
 			order.onclick = listOrder;
-			list.onclick = remove;
+			//list.onclick = remove;
 		}
 		init();
 	}
