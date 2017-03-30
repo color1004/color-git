@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>IFE JavaScript Task 06</title>
+	<style type="text/css">
+		ul#list{
+			margin-top:10px;
+			margin-left:-40px;
+		}
+		li{
+			list-style-type:none;
+			float:left;
+			padding:8px;
+			margin-right:10px;
+			background-color:red;
+			color:white;
+			font-size:14px;
+		}
+		ul:after{
+			content:".";
+			display:block;
+			clear:both;
+			height:0px;
+			visibility: hidden;
+		}
+		button#right-in{
+			margin-right:30px;								
+		}
+		#data-in{
+			width:168px;
+			height:84px;
+		}
+		#search-letter{
+			
+		}
+	</style>
+
+</head>
+<body>	
+	
+	<textarea id="data-in" value="" placeholder="请输入队列内容"></textarea>
+	<button id="left-in">左侧入</button>
+	<button id="right-in">右侧入</button>
+	<button id="left-out">左侧出</button>
+	<button id="right-out">右侧出</button>
+	<ul id="list">		
+	</ul>
+	<input type="text" id="search-letter" value="" placeholder="请输入查询字段"/>
+	<button id="search-button">查询</button>
+	
+	<script>	
+	window.onload = function(){
+	
+		var num = document.getElementById("data-in");
+		var list = document.getElementById("list");
+		var lis = list.getElementsByTagName("li");
+		var sletter = document.getElementById("search-letter");		
+		var liarray = [];
+		
+		//获取输入内容并处理
+		function insertNum(){
+			//if(num.value != ""){ //输入无效内容不添加元素但不提醒
+			if(/^[,，、\s]*$/.test(num.value)){ 
+				alert("请输入内容");	
+				num.focus();
+			}else{
+				/*用回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔
+				  numVal = num.value.split(/[,，、\s]+/); //首尾无效字段会用于split，产生空元素
+				  +匹配前面的子表达式一次或多次(>=1次）*表示>=0次 ^匹配输入字符串的开始位置 $匹配输入字符串的结束位置*/
+				var numVal = [];
+				numVal = num.value.replace(/^[\s,，]*|[\s,，]*$/g,"").split(/[,，、\s]+/);
+				return numVal;
+			}
+		}
+					
+		function leftAdd(){
+			var data = insertNum();
+			if(typeof(data)!="undefined"){
+				for(var i=0; i<data.length; i++){
+					var li = document.createElement("li");
+					li.innerHTML = data[i];
+					list.insertBefore(li,list.firstChild);					
+				}
+				//num.value = "";
+				num.focus();
+			}		
+		}
+		function rightAdd(){
+			var data = insertNum();
+			if(!data || typeof(data)!="undefined"){
+				for(var i=0; i<data.length; i++){
+					var li = document.createElement("li");
+					li.innerHTML = data[i];
+					list.appendChild(li);				
+				}
+				//num.value = "";
+				num.focus();
+			}
+		}
+		function leftRemove(){
+			if(lis.length == 0){alert("无可删除元素");}
+			else{
+				var mes = lis[0].innerHTML;
+				lis.removeChild(lis[0]);
+				alert("删除元素：" + mes);
+			}	
+		}	
+		function rightRemove(){
+			if(lis.length == 0){alert("无可删除元素");}
+			else{
+				var mes = lis[lis.length-1].innerHTML;
+				lis.removeChild(lis[lis.length-1]);
+				alert("删除元素：" + mes);
+			}
+		}				
+		list.addEventListener('click',function(e){
+			if(e.target.nodeName == 'LI'){
+				list.removeChild(e.target);
+			}
+		})
+		//获取当前队列元素
+		function getArray(){
+			for(var i=0;i<lis.length;i++){				 
+				var arrayItem = lis[i].innerHTML;
+				liarray.push(arrayItem);				
+			}
+			return liarray;
+		}
+		function initColor(){
+			for(var i=0;i<lis.length;i++){
+				lis[i].style.backgroundColor = "red";
+			}
+		}
+		function changeColor(item){			
+			lis[item].style.backgroundColor = "blue";
+		}
+		function search(){
+			var matchItem = [];
+			var arrayLi = [];
+			arrayLi = getArray();
+			initColor();
+			var searchValue = sletter.value.replace(/[\s,，]*/g, "");
+			if(searchValue == ""){
+				alert("请输入有效查询字段");
+			}else{				
+				for(var i=0; i<arrayLi.length; i++){			
+					var matchRes = arrayLi[i].match(searchValue);
+					alert(matchRes+"---"+searchValue);
+					if(matchRes){
+						matchItem.push(i);
+					}
+				}								
+				if(matchItem.length == 0){
+					alert("无匹配元素");
+				}else{					
+					for(var i=0; i<matchItem.length; i++){
+						changeColor(matchItem[i]);
+					}
+				}												
+			}
+			//arrayLi.length=0; //Java不行
+			arrayLi.splice(0,arrayLi.length);
+			//arrayLi = []; //不行
+		}
+			
+		function init(){
+			var leftIn = document.getElementById("left-in");
+			var rightIn = document.getElementById("right-in");
+			var leftOut = document.getElementById("left-out");
+			var rightOut = document.getElementById("right-out");
+			var sbutton = document.getElementById("search-button");
+			
+			
+			leftIn.onclick = leftAdd;
+			rightIn.onclick = rightAdd;
+			leftOut.onclick = leftRemove;
+			rightOut.onclick = rightRemove;
+			sbutton.onclick = search;
+		}
+		init();
+	}
+	</script>
+
+</body>
+</html>
