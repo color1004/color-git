@@ -159,7 +159,7 @@
 				for(var j=0; j<(len-i-1); j++){
 					if(lis[j].style.height.split("p")[0] > lis[j+1].style.height.split("p")[0]){
 						list.insertBefore(lis[j+1],lis[j]);
-						lis.removeChild(lis[j+2]);
+						list.removeChild(lis[j+2]);
 					}
 				}
 			}	
