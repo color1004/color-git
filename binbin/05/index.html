@@ -43,15 +43,21 @@
 	
 		var num = document.getElementById("data-in");
 		var list = document.getElementById("list");
+		var lis = list.getElementsByTagName("li");
 		var liarray = [];
 		
-		//判断输入
+		//添加元素
 		function insertNum(){
 			if(num.value == ""){
 				alert("请输入一个10-100的数字");	
 				num.focus();
 			}else if(!isNaN(num.value) && num.value<=100 && num.value>=10){
-				return num.value;				
+				var data = num.value;							
+				var li = document.createElement("li");
+				var liheight = data + "px";
+				li.style.height = liheight;
+				li.innerHTML = "";	
+				return li;
 			}else{
 				alert("请输入一个10-100的数字")
 				num.value = "";
@@ -60,111 +66,113 @@
 		}
 		
 		function leftAdd(){
-			if(liarray.length < 10){
-				var data = insertNum();			
-				if(!isNaN(data)){
-					liarray.unshift(data);
-					var li = document.createElement("li");
-					var liheight = data + "px";
-					li.style.height = liheight;
-					li.innerHTML = "";
-					list.insertBefore(li,list.firstChild);
-					num.value = "";
-					num.focus();
-				}	
+			if(lis.length < 10){
+				var li = insertNum();
+				list.insertBefore(li,list.firstChild);
+				num.value = "";
+				num.focus();
 			}else{
 				alert("队列元素最多为60，不可再添加");
-			}
-				
+			}				
 		}
 		function rightAdd(){
-			if(liarray.length < 10){
-				var data = insertNum();
-				if(!isNaN(data)){
-					liarray.push(data);
-					var li = document.createElement("li");
-					var liheight = data + "px";
-					li.style.height = liheight;
-					li.innerHTML = "";
-					list.appendChild(li);
-					num.value = "";
-					num.focus();
-				}
+			if(lis.length < 10){
+				var li = insertNum();
+				list.appendChild(li);
+				num.value = "";
+				num.focus();
 			}else{
 				alert("队列元素最多为60，不可再添加");
-			}
-			
+			}			
 		}
 		function leftRemove(){
-			var liRemove = list.getElementsByTagName("li");
-			if(liRemove.length == 0){alert("无可删除元素");}
+			if(lis.length == 0){alert("无可删除元素");}
 			else{
-				var removeFirst=liRemove[0];
-				var mes = liarray[0];
+				var removeFirst=lis[0];
+				var mes = removeFirst.style.height.split("p")[0];
 				removeFirst.parentNode.removeChild(removeFirst);
 				alert("删除元素：" + mes);
-				liarray.shift();
 			}	
 		}	
 		function rightRemove(){
-			var liRemove = list.getElementsByTagName("li");
-			if(liRemove.length == 0){alert("无可删除元素");}
+			if(lis.length == 0){alert("无可删除元素");}
 			else{
-				var removeLast=liRemove[liRemove.length-1];
-				var mes = liarray[liarray.length-1];
+				var removeLast=lis[lis.length-1];
+				var mes = removeLast.style.height.split("p")[0];
 				removeLast.parentNode.removeChild(removeLast);
 				alert("删除元素：" + mes);
-				liarray.pop();				
 			}
 		}
-		
+		/*
+		//交换元素
 		function swap(data, left, right){
 			var t = data[left];
 			data[left] = data[right];
 			data[right] = t;
 		}
+		//从小到大排序
 		function sortData(data) {
-			/*data.sort(function(a,b){
-				return a - b;
-			});*/
-			var len=data.length;			
-			
-			for(var i=0; i<len; i++){
-				for(var j=0; j<(len-i); j++){
-					if(data[j] > data[j+1]){
+			//data.sort(function(a,b){
+			//	return a - b;
+			//});
+			var len=data.length;						
+			for(var i=0; i<(len-1); i++){
+				for(var j=0; j<(len-i-1); j++){
+					if(data[j].style.height.split("p")[0] > data[j+1].style.height.split("p")[0]){
 						swap(data, j, j+1);
 					}
 				}
-			}
-			
+			}			
 			return data;
 		}
-		
 		function removeAll(){
-			var liRemove = list.getElementsByTagName("li");
-			while(liRemove.length>0){
-				var removeLast=liRemove[liRemove.length-1];				
+			while(lis.length>0){
+				var removeLast=lis[lis.length-1];				
 				removeLast.parentNode.removeChild(removeLast);
 			}
 		}
+		//获取当前队列元素
+		function getArray(){
+			for(var i=0;i<lis.length;i++){				 
+				var arrayItem = lis[i].style.height.split("p")[0];
+				liarray.push(arrayItem);				
+			}
+			return liarray;
+		}
 		function listOrder(){
+			var arrayLi = getArray();						
 			removeAll();
-			liarray = sortData(liarray);			
-			for(var i=0;i<liarray.length;i++){			
+			arrayLi = sortData(arrayLi);			
+			for(var i=0;i<arrayLi.length;i++){			
 				var li = document.createElement("li");
-				var liheight = liarray[i] + "px";
+				var liheight = arrayLi[i] + "px";
 				li.style.height = liheight;
 				li.innerHTML = "";
 				list.appendChild(li);
 			}
+			liarray = [];			
+		}*/
+		//简化方法
+		function listOrder(){
+			var len=lis.length;						
+			for(var i=0; i<(len-1); i++){
+				for(var j=0; j<(len-i-1); j++){
+					if(lis[j].style.height.split("p")[0] > lis[j+1].style.height.split("p")[0]){
+						list.insertBefore(lis[j+1],lis[j]);
+						lis.removeChild(lis[j+2]);
+					}
+				}
+			}	
 		}
-				
-		list.addEventListener('click',function(e){
-			if(e.target.nodeName == 'LI'){
+		//事件监听
+		/*list.addEventListener('click',function(e){
+			if(e.target.nodeName == 'LI'){				
 				list.removeChild(e.target);
 			}
-		})
-			
+		})*/
+		function remove(){
+			list.removeChild(event.target);
+		}	
 		function init(){
 			var leftIn = document.getElementById("left-in");
 			var rightIn = document.getElementById("right-in");
@@ -178,13 +186,11 @@
 			leftOut.onclick = leftRemove;
 			rightOut.onclick = rightRemove;
 			order.onclick = listOrder;
+			list.onclick = remove;
 		}
 		init();
 	}
 	</script>
-
-
-
 
 </body>
 </html>
