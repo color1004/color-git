@@ -1,0 +1,102 @@
+<DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>耀耀学院任务一</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			font-family:微软雅黑;
+			font-size:16px;
+		}
+		form{
+			position:relative;
+			margin:100px auto auto auto;
+			width:400px;
+			height:200px;
+		}
+		#name-label{
+			font-size: 18px;
+			font-weight: 600;			
+		}
+		#name-in{
+			margin-left:8px;
+			padding:10px;
+			width:270px;
+			border:1px solid #cccccc;/*灰色*/
+			border-radius:5px;
+			text-indent: 0.5em;
+		}
+		#sub-button{
+			display:inline;
+			padding:10px 15px;
+			margin-left:10px;
+			background-color:#2f79ba;
+			border:1px solid #296ba7;
+			border-radius:5px;
+			color:white;
+		}
+		#sub-button:hover{
+			background-color:#296ba7;
+		}
+		#name-hint{
+			margin-left:48px;
+			color:#999999;
+		}
+	</style>
+	
+</head>
+<body>
+	<form id="myform" onsubmit="return validate()" method="post">
+		<label id="name-label">名称</label>
+		<input type="text" id="name-in" value="" />
+		<input type="submit" id="sub-button" value="验证" />
+		<br />
+		<label id="name-hint">必填，长度为4-16个字符</label>		
+	</form>
+	<script type="text/javascript">
+	//window.onload = function(){
+		//if(!document.getElementById) return false;
+		var nameIn = document.getElementById("name-in");
+		var nameHint = document.getElementById("name-hint");
+		/*function getStrLen(str){			
+			return str.replace(/[^\x00-\xff]/g, '__').length; 
+		}*/
+		function getStrLen (str){
+			var enLen = 0;
+			var zhLen = 0;
+			for (let ch of str) {
+				if (isASCII(ch))
+					enLen++;
+				else 
+					zhLen++;
+			} 
+			return enLen + zhLen * 2;  
+		}
+		function isASCII (c) {
+				return c.codePointAt(0) <= 0xFF;
+		}
+		function validate(){
+			var len = getStrLen(nameIn.value);
+			if(len<1){
+				nameIn.style.borderColor = "#df0110";//红色
+				nameHint.style.color = "#df0110";
+				nameHint.innerHTML = "姓名不能为空";
+				return false;
+			}else if(len<4 || len>16){
+				nameIn.style.borderColor = "#df0110";//红色
+				nameHint.style.color = "#df0110";
+				nameHint.innerHTML = "长度为4-16个字符，汉字为2个字符";
+				return false;
+			}else{
+				nameIn.style.borderColor = "#60bb44";//绿色
+				nameHint.style.color = "#60bb44";
+				nameHint.innerHTML = "名称格式正确";
+				return false;
+			}
+		}
+	//}
+	</script>
+</body>
+</html>
