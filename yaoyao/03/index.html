@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>耀耀学院任务三</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="script.js"></script>	
+</head>
+<body>
+	<form id="myform" onsubmit="" method="post">
+		<div id="choose">
+			<label id="schoolLabel"><input type="radio" id="inSchool" name="studentType" value="inSchool" checked="checked" /> 在校生</label>	
+			<label id="notSchoolLabel"><input type="radio" id="notInSchool" name="studentType" value="notInSchool" /> 非在校生</label>	
+		</div>
+		<div class="choice" id="school">
+			<label>学校</label>
+			<select id="selectProvince" name="selectProvince">
+				<option value="0">请选择省份</option>
+				<option value="北京">北京</option>
+				<option value="上海">上海</option>
+				<option value="天津">天津</option>
+			</select>
+			<select id="selectSchool" name="selectSchool">
+				<option value="0">请选择学校</option>
+			</select>
+		</div>
+		<div class="choice" id="unit">
+			<label>就业单位</label>
+			<input type="text" id="unit-input" value="" />
+		</div>
+	</form>
+</body>
+</html>

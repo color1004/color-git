@@ -1,0 +1,46 @@
+*{
+	margin:0;
+	padding:0;
+	font-family:微软雅黑;
+	font-size:16px;
+}
+form{
+	position:relative;
+	margin:100px auto auto auto;
+	width:600px;
+	height:300px;
+}
+#choose{
+	width:100%;
+	text-align:center;
+}
+#notSchoolLabel{
+	margin-left:50px;
+}		
+.choice{
+	width:100%;
+	text-align:center;
+	margin-top:40px;
+}
+#school{
+	display:block;
+}
+select{
+	margin-left:12px;
+	margin-right:12px;
+	border-radius:4px;
+	padding:6px;
+	border:1px solid #cccccc;
+	width:150px;
+}
+#unit{
+	display:none;
+}
+#unit-input{
+	margin-left:12px;
+	padding:6px;
+	width:270px;
+	border:1px solid #cccccc;
+	border-radius:4px;
+	text-indent: 0.5em;
+}
