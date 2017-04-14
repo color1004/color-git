@@ -1,0 +1,53 @@
+*{
+	margin:0;
+	padding:0;
+	font-family:微软雅黑;
+	font-size:14px;
+}
+#myform{
+	position:relative;
+	margin:20px auto auto auto;
+	width:800px;
+	height:600px;
+}
+table{
+	border-collapse:collapse;
+	width:100%;
+}
+td{
+	padding:8px;
+}
+.label{
+	font-size: 16px;
+	font-weight: 600;
+	text-align:right;
+	width:120px;
+}
+.in{
+	width:570px;
+	height:20px;
+	border:1px solid #999999;/*灰色*/
+	border-radius:5px;
+	text-indent: 0.5em;
+	padding:8px;
+}
+.tip{
+	color:#999999;
+	padding-top:0;
+}
+.row{
+	display:none;
+}
+#sub-button{
+	display:inline;
+	padding:8px 18px;
+	margin-left:522px;
+	background-color:#2f79ba;
+	border:1px solid #296ba7;
+	border-radius:5px;
+	color:white;
+	text-align:right;
+}
+#sub-button:hover{
+	background-color:#296ba7;
+}
