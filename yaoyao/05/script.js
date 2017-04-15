@@ -1,17 +1,4 @@
 var box = document.getElementById("box");
-box.addEventListener("transitionend", function(e) {
-  if (e.propertyName === "transform"){
-    box.style.borderRadius = "0";
-  }
-});
-var operatebox = document.getElementById("operatebox");	
-operatebox.addEventListener('click',function(e){
-	var tag = e.target.id;
-	if(tag == "GO" || tag == "TUN LEF" || tag == "TUN RIG" || tag == "TUN BAC" || tag == "TRA LEF" || tag == "TRA TOP" 
-	|| tag == "TRA RIG" || tag == "TRA BOT" || tag == "MOV LEF" || tag == "MOV TOP" || tag == "MOV RIG" || tag == "MOV BOT"){
-		document.getElementById("in").value = tag;
-	}
-});
 var input = document.getElementById("in");
 
 function getDirection(){
