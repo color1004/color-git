@@ -87,12 +87,3 @@ div#operate{
 	height:35px;
 	background-color:red;
 }
-#operatebox{
-	position:absolute;
-	top:150px;
-	left:200px;
-}
-div#operatebox p{
-	line-height:30px;
-	font-size:16px;
-}
