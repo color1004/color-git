@@ -1,5 +1,5 @@
-[{id: "900", text: "ÏµÍ³¹ÜÀí", state: "closed", checked: false, attributes: null, children: null,¡­},¡­]
-0:{id: "900", text: "ÏµÍ³¹ÜÀí", state: "closed", checked: false, attributes: null, children: null,¡­}
+[{id: "900", text: "ç³»ç»Ÿç®¡ç†", state: "closed", checked: false, attributes: null, children: null,â€¦},â€¦]
+0:{id: "900", text: "ç³»ç»Ÿç®¡ç†", state: "closed", checked: false, attributes: null, children: null,â€¦}
 attributes:null
 checked:false
 children:null
@@ -7,9 +7,9 @@ iconCls:"computer_key"
 id:"900"
 pid:null
 state:"closed"
-text:"ÏµÍ³¹ÜÀí"
+text:"ç³»ç»Ÿç®¡ç†"
 url:null
-1:{id: "10000", text: "»ù´¡×ÊÁÏ", state: "closed", checked: false, attributes: null, children: null,¡­}
+1:{id: "10000", text: "åŸºç¡€èµ„æ–™", state: "closed", checked: false, attributes: null, children: null,â€¦}
 attributes:null
 checked:false
 children:null
@@ -17,9 +17,9 @@ iconCls:"text_padding_left"
 id:"10000"
 pid:null
 state:"closed"
-text:"»ù´¡×ÊÁÏ"
+text:"åŸºç¡€èµ„æ–™"
 url:null
-2:{id: "40000", text: "¹ã¸æ¹ÜÀí", state: "closed", checked: false, attributes: {url: ""}, children: null,¡­}
+2:{id: "40000", text: "å¹¿å‘Šç®¡ç†", state: "closed", checked: false, attributes: {url: ""}, children: null,â€¦}
 attributes:{url: ""}
 checked:false
 children:null
@@ -27,9 +27,9 @@ iconCls:"bell"
 id:"40000"
 pid:null
 state:"closed"
-text:"¹ã¸æ¹ÜÀí"
+text:"å¹¿å‘Šç®¡ç†"
 url:""
-3:{id: "50000", text: "ÎÄÕÂ¹ÜÀí", state: "closed", checked: false, attributes: {url: ""}, children: null,¡­}
+3:{id: "50000", text: "æ–‡ç« ç®¡ç†", state: "closed", checked: false, attributes: {url: ""}, children: null,â€¦}
 attributes:{url: ""}
 checked:false
 children:null
@@ -37,9 +37,9 @@ iconCls:"text_dropcaps"
 id:"50000"
 pid:null
 state:"closed"
-text:"ÎÄÕÂ¹ÜÀí"
+text:"æ–‡ç« ç®¡ç†"
 url:""
-4:{id: "60000", text: "ÖªÊ¶¿â", state: "closed", checked: false, attributes: {url: ""}, children: null,¡­}
+4:{id: "60000", text: "çŸ¥è¯†åº“", state: "closed", checked: false, attributes: {url: ""}, children: null,â€¦}
 attributes:{url: ""}
 checked:false
 children:null
@@ -47,5 +47,5 @@ iconCls:"book_open"
 id:"60000"
 pid:null
 state:"closed"
-text:"ÖªÊ¶¿â"
+text:"çŸ¥è¯†åº“1"
 url:""
