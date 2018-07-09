@@ -18,9 +18,9 @@
 
 // 1. 逻辑操作符 not and only or
 
-// 一个基本的媒体查询，即一个媒体属性与默认指定的all媒体类型
+// 一个基本的媒体查询，包含 媒体属性 和 默认指定的all媒体类型
 
-// 电视 && 横屏 && 屏幕宽度 >= 700 时 样式生效
+// 1.1 and    电视 && 横屏 && 屏幕宽度 >= 700 时 样式生效
 @media tv and (min-width: 700px) and (orientation: landscape) {
     .facet_sidebar {
         color: #eee;
@@ -28,8 +28,28 @@
     }
     // something...
 }
+<link rel="stylesheet" media="(max-width: 800px)" href="example.css" />
+// link不满足要求时 仍会下载css文件，但是不生效
 
-// 2. 逗号分隔符 相当于 or
+// 1.2 not    关键字应用于整个媒体查询，在媒体查询为假时返回真  不应用于 逗号 之后的  另一个媒体查询
+@media not screen and (color), print and (color) { ... }
+// 相当于 如下
+@media not ( screen and (color) ), print and (color) { ... }
+  
+@media not all and (monochrome) { ... }
+// 相当于 如下
+@media not ( all and (monochrome) ) { ... }  而不是 (not all) and (monochrome)
+
+// 1.3 only    防止老旧的浏览器不支持带媒体属性的查询而应用到给定的样式：
+@media only screen and (color) { ... }
+<link rel="stylesheet" media="only screen and (color)" href="example.css" />
+
+// 2. 逗号分隔符   相当于 or  在 1.2中 逗号与or不同
 
 // 宽度>=700的屏幕 或者 手持设备横屏时  样式生效
 @media (min-width: 700px), handheld and (orientation: landscape) {}
+
+/*
+    max-device-width  设备宽度
+    max-width  浏览器窗口文档宽度 及 渲染宽度
+*/
