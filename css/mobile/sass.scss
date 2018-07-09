@@ -1,0 +1,15 @@
+//媒体查询 获取device-pixel-ratio 和 device-width
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    html{font-size: 37.5px;}
+}
+
+//根据视觉稿设置基准值 75
+@function px2rem($px){
+    $rem : 75px;
+    @return ($px/$rem) + rem;
+}
+
+//use px2rem
+.test {
+    height: px2rem(90px);
+}
