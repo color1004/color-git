@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=.5, minimum-scale=.5, maximum-scale=.5, user-scalable=0,viewport-fit=cover" name="viewport">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>viewport ipx</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		div {
+			border: 1px solid black;
+			/*padding-left: 0.1rem;*/
+			font-size: 0.24rem;
+		}
+		div.a {
+			width: 2rem;
+			height: 1rem;
+		}
+		div.b {
+			border: 0.01rem solid red;
+			width: 7.5rem;
+			height: 1rem;
+		}
+	</style>
+</head>
+
+<body>
+    <div class="a">hh呵呵</div>
+	<div class="b">hh呵呵</div>
+	<script>
+		var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+		function ft() {
+			var clientWidth = window.innerWidth;
+			console.log('clientWidth', clientWidth);
+			document.documentElement.style.fontSize = clientWidth / 750 * 100 + 'px';
+		}
+		window.addEventListener(resizeEvt, ft, false);
+		window.addEventListener('DOMContentLoaded', ft, false);
+	</script>
+</body>
+
+</html>
