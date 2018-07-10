@@ -27,7 +27,7 @@ document.getElementsByTagName('head')[0].appendChild(metaTag);
 
 // js 设置 不同频宽的 html 的 font-size 基准值
 
-var clientWidth = window.innerWidth;
+var clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
 document.documentElement.style.fontSize = clientWidth / 10 + 'px';
 
