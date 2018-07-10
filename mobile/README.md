@@ -1,12 +1,17 @@
 // 自适应
 
 // js
+
 // 使用动态设置viewport，在iphone6下，scale会被设置成1/2即0.5 plus 1/3
+
 const dpr = window.devicePixelRatio;
+
 meta.setAttribute('content', 'initial-scale=' + 1/dpr + ', maximum-scale=' + 1/dpr + ', minimum-scale=' + 1/dpr + ', user-scalable=no');
 
 // js 设置 不同频宽的 html 的 font-size 基准值
+
 var clientWidth = window.innerWidth;
+
 document.documentElement.style.fontSize = clientWidth / 10 + 'px';
 
 
