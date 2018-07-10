@@ -6,7 +6,24 @@
 
 const dpr = window.devicePixelRatio;
 
-meta.setAttribute('content', 'initial-scale=' + 1/dpr + ', maximum-scale=' + 1/dpr + ', minimum-scale=' + 1/dpr + ', user-scalable=no');
+
+设置 scale解决 iPhone6 1px
+
+const viewport = document.querySelector("meta[name=viewport]");
+
+viewport.setAttribute('content', 'initial-scale=' + 1/dpr + ', maximum-scale=' + 1/dpr + ', minimum-scale=' + 1/dpr + ', user-scalable=no');
+
+
+或者meta标签已存在
+
+var metaTag=document.createElement('meta');
+
+metaTag.name = "viewport"
+
+metaTag.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+
+document.getElementsByTagName('head')[0].appendChild(metaTag);
+
 
 // js 设置 不同频宽的 html 的 font-size 基准值
 
