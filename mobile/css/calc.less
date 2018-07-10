@@ -1,0 +1,19 @@
+calc()
+
+可用于计算  + - * /  需要在 符号左右 空一格
+
+vw vh  表示viewport的 1%
+
+100vh
+
+
+防止calc在less编译时计算
+height: calc(~'100vh - 4.2rem');
+
+//固定值
+height : calc(100vh - 4.2rem);
+
+// 变量写法
+width : calc(~"100% - @{diff}");
+
+100%是body的  100vh是视窗的
