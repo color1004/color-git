@@ -49,7 +49,7 @@ a{
 .container .arrow {
     position: absolute;
     top: 35%;
-    color: green;
+    color: gray;
     padding:0px 14px;
     border-radius: 50%;
     font-size: 50px;
