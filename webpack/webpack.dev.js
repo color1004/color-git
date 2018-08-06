@@ -1,49 +1,51 @@
 const webpack = require("webpack");
-const path = require("path");
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = (env) => {
+module.exports = (env, argv) => {
     return merge(common(env), {
+        devtool: '#source-map',
         module: {
             rules: [{
                 test: /\.(less|css)$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', 'postcss-loader', 'less-loader'],
-                    publicPath:"../"
-                })
-            }],
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "postcss-loader" //注意 ： postcss-loader必须在less-loader前面否则 解析less会报错
+                }, {
+                    loader: "less-loader" // compiles Less to CSS
+                }]
+            }]
         },
         plugins: [
-            //压缩并去掉console.log
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    sourceMap: false,
-                    compress: {
-                        warnings: false,
-                        drop_console: false
-                    }
-                }
-            }),
-            new CleanWebpackPlugin(['dist_m'], 　 //匹配删除的文件
-                {
-                    root: path.join(__dirname, '../../'), //根目录
-                    verbose: true,//开启在控制台输出信息
-                    dry: false　　　　　　　　　　 //启用删除文件
-                }
-            ),
-            new ExtractTextPlugin("css/[name].css"),
+            new webpack.HotModuleReplacementPlugin(),
+            new webpack.NamedModulesPlugin(),
+            new webpack.NoEmitOnErrorsPlugin(),
             new webpack.DefinePlugin({
                 'process.env': {
-                    'NODE_ENV': JSON.stringify("production")
+                    'NODE_ENV': JSON.stringify("development")
                 },
-                __DEV__: false,
+                __DEV__: true,
                 serverDomain: JSON.stringify("beta-api.jd.co.th")
-            }),
-        ]
+            })
+        ],
+        devServer: {
+            //防止刷新404的问题
+            historyApiFallback: true,
+            disableHostCheck: true,
+            host: "poker.jd.com",
+            inline: true,
+            hot: true,
+            port: 8019,
+            proxy: [{
+                context: ["/cart/**"],
+                target: "https://test.com",
+                changeOrigin: true,
+                bypass: function(req, res, proxyOptions) {},
+                onProxyRes: function(proxyRes, req, res) {}
+            }]
+        }
     })
-};
+}
