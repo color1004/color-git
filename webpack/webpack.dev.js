@@ -28,7 +28,7 @@ module.exports = (env, argv) => {
                     'NODE_ENV': JSON.stringify("development")
                 },
                 __DEV__: true,
-                serverDomain: JSON.stringify("beta-api.jd.co.th")
+                serverDomain: JSON.stringify("beta-api.domain.com")
             })
         ],
         devServer: {
