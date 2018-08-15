@@ -42,7 +42,7 @@ module.exports = (env) => {
                     'NODE_ENV': JSON.stringify("production")
                 },
                 __DEV__: false,
-                serverDomain: JSON.stringify("beta-api.jd.co.th")
+                serverDomain: JSON.stringify("api.domain.com")
             }),
         ]
     })
