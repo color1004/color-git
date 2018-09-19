@@ -10,19 +10,20 @@
          open: 'openApp.jdMobile://virtual?params={"category":"jump","des":"HomePage"}',
          down: 'test.html'
         };
-        var iframe = document.createElement('iframe');
         var body = document.body;
-        iframe.style.cssText='display:none;width=0;height=0';
-        // var alink = document.createElement('a');
-        // alink.style.cssText='display:none;width=0;height=0';
+        //var iframe = document.createElement('iframe');
+        //iframe.style.cssText='display:none;width=0;height=0';
+        var alink = document.createElement('a');
+        alink.style.cssText='display:none;width=0;height=0';
         var timer = null;
         // 立即打开的按钮
         var openapp = document.getElementById('openapp');
         openapp.addEventListener('click', function() {
-            body.appendChild(iframe);
-            iframe.src = url.open;
-            // body.appendChild(alink);
-            // alink.href = url.open;
+            //body.appendChild(iframe);
+            //iframe.src = url.open;
+            body.appendChild(alink);
+            alink.href = url.open;
+            
             timer = setTimeout(function() {
                 console.log('没有安装app');
                 window.location.href = url.down;
