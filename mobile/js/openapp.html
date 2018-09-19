@@ -23,7 +23,7 @@
             //iframe.src = url.open;
             body.appendChild(alink);
             alink.href = url.open;
-            
+            alink.click();
             timer = setTimeout(function() {
                 console.log('没有安装app');
                 window.location.href = url.down;
